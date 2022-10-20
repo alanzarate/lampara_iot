@@ -331,7 +331,8 @@ label #btnClose{
  }
  .slider1 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance:none !important;
-   
+  width: 20px;
+  height: 20px;
   
   background:#fcfcfc;
   border:2px solid #7E6D57;
@@ -370,7 +371,7 @@ label #btnClose{
    .sliderPwm input[type="range"] {
     -webkit-appearance:none !important;
     width:420px;
-    height:3px;
+    height:4px;
     background:#7E6D57;
     margin: 0px !important;
      
@@ -379,7 +380,8 @@ label #btnClose{
    }
    .sliderPwm input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance:none !important;
-     
+    width: 20px;
+    height: 20px;
     
     background:#fcfcfc;
     border:2px solid #7E6D57;

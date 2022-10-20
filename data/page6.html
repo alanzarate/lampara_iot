@@ -14,7 +14,9 @@
     />
     <link rel="stylesheet" href="page6.css">
     <title>Lámpara</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <script src="https://code.highcharts.com/highcharts.js"></script>
   </head>
 <body onload="getData()">
@@ -39,22 +41,22 @@
       </div>
   </div>
   
-  <div class="container1">
-    <div class="row1">
-      <div class="f_col1">
+  <div class="container">
+    <div class="row">
+      <div class="col">
         <img
         class="logo-ucb"
         src="https://ucblpz.com/wp-content/uploads/2018/12/UCB-logo-lapaz.png"
       />
       </div>
-      <div class="f_col2">
+      <div class="col">
         <div>
             <h2 class="titulo-h2">Internet de las cosas - Lámpara inteligente</h2>
         </div>
         
         
       </div>
-      <div class="f_col3">
+      <div class="col">
         
         <div class="waveStrength-3">
             <div class="wave">
@@ -69,7 +71,7 @@
           </div>
 
       </div>
-      <div class="f_col3">
+      <div class="col">
 
       </div>
     </div>
@@ -108,30 +110,46 @@
     <hr>
 
 
-    <div class="container">
-      <div class="row">
-         
-        <div class="col s12 m6">
-          <h2>Elige los horarios</h2>
-          <form>
-            <div class="input-field">
-              <input type="text" id="time1" class="timepicker1">
-              <label for="time1">Hora de encendido</label>
-            </div>
-            <div class="input-field">
-              <input type="text" id="time2" class="timepicker2">
-              <label for="time2">Hora de apagado</label>
-            </div>
-          </form>
-
-          <button onclick="convierte()">Definir horario</button>
-        </div>
-        
-        
-
-      </div>
+    <h2 style="text-align: center;">Control por horario programado:</h2>
+  <div class="container d-flex justify-content-center">
+  <div class="p-5 bg-dark bg-gradient text-white">
+    <h2 class="text-center mt-2">Control por Horario</h2>
+    <div id="digital-clock" class="bg-warning text-center text-black p-2 h2 w-full">
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+    <h3 class="text-center">Programación del horario</h3>
+    <div id="alarm-list"></div>
+    <hr />
+    <form class="text-center mt-2">
+      <h5>Hora de encendido</h5>
+      <div class="container">
+        <label for="hour">H:</label>
+        <input type="number" name="hour" id="hour" min="0" max="23" value="0">
+        <label for=minute>M:</label>
+        <input type="number" name="minute" id="minute" min="0" max="59" value="0">
+        <label for=second>S:</label>
+        <input type="number" name="second" id="second" min="0" max="59" value="0">
+      </div>
+      <br>
+      <h5>Hora de apagado</h5>
+      <div class="container">
+        <label for="hour">H:</label>
+        <input type="number" name="hour" id="hour" min="0" max="23" value="0">
+        <label for=minute>M:</label>
+        <input type="number" name="minute" id="minute" min="0" max="59" value="0">
+        <label for=second>S:</label>
+        <input type="number" name="second" id="second" min="0" max="59" value="0">
+      </div>
+      
+
+
+      <div class="d-grid gap-2 mt-2">
+        <br>
+        <input type="button" class="btn btn-warning btn-block " id="Apagado" value="Definir horario " onclick = "mostrar()">
+      </div>
+    </form>
+  </div>  
+  </div>
+    <br>
     <script>
       const timer1 = document.querySelector('.timepicker1');
       M.Timepicker.init(timer1, {twelveHour:false});

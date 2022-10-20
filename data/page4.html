@@ -42,22 +42,22 @@
       </div>
   </div>
   
-    <div class="container1">
-        <div class="row1">
-          <div class="f_col1">
+    <div class="container">
+        <div class="row">
+          <div class="col">
             <img
             class="logo-ucb"
             src="https://ucblpz.com/wp-content/uploads/2018/12/UCB-logo-lapaz.png"
           />
           </div>
-          <div class="f_col2">
+          <div class="col">
             <div>
                 <h2 class="titulo-h2">Internet de las cosas - Lámpara inteligente</h2>
             </div>
             
             
           </div>
-          <div class="f_col3">
+          <div class="col">
             
             <div class="waveStrength-3">
                 <div class="wave">
@@ -72,8 +72,11 @@
               </div>
 
           </div>
-          <div class="f_col3">
-
+          <div class="col">
+            <img src="https://i.ibb.co/cg2H8FQ/logo2.jpg" style="width: 160px;" alt="">
+            <p>
+              G.O.A.T.'s
+            </p>
           </div>
         </div>
     </div>
@@ -101,15 +104,31 @@
     <div id="alarm-list"></div>
     <hr />
     <form class="text-center mt-2">
-      <label for="hour">H:</label>
-      <input type="number" name="hour" id="hour" min="0" max="23" value="0">
-      <label for=minute>M:</label>
-      <input type="number" name="minute" id="minute" min="0" max="59" value="0">
-      <label for=second>S:</label>
-      <input type="number" name="second" id="second" min="0" max="59" value="0">
+      <h5>Hora de encendido</h5>
+      <div class="container">
+        <label for="hour">H:</label>
+        <input type="number" name="hour" id="hour" min="0" max="23" value="0">
+        <label for=minute>M:</label>
+        <input type="number" name="minute" id="minute" min="0" max="59" value="0">
+        <label for=second>S:</label>
+        <input type="number" name="second" id="second" min="0" max="59" value="0">
+      </div>
+      <br>
+      <h5>Hora de apagado</h5>
+      <div class="container">
+        <label for="hour">H:</label>
+        <input type="number" name="hour" id="hour" min="0" max="23" value="0">
+        <label for=minute>M:</label>
+        <input type="number" name="minute" id="minute" min="0" max="59" value="0">
+        <label for=second>S:</label>
+        <input type="number" name="second" id="second" min="0" max="59" value="0">
+      </div>
+      
+
+
       <div class="d-grid gap-2 mt-2">
-        <input type="button" class="btn btn-warning btn-block " id = "encendido" value="Hora de Encendido" onclick="mostrar()">
-        <input type="button" class="btn btn-warning btn-block " id="Apagado" value="Hora de Apagado" onclick = "mostrar()">
+        <br>
+        <input type="button" class="btn btn-warning btn-block " id="Apagado" value="Definir horario " onclick = "mostrar()">
       </div>
     </form>
   </div>  
