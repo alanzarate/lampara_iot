@@ -75,7 +75,7 @@
     <div class="container c_infoLampara">
         <h5 class="titulo">Estado de la Lámpara</h5>
          <br>
-            <div class="label" onclick="imprimir()">
+            <div class="label" onclick="sendAction1(2)">
               <input type="checkbox"/>
               <span class="btn-real-sw"></span>
               <i id="pulsador-button" class="fa fa-power-off"></i>
@@ -83,7 +83,7 @@
     </div>
     <br>
     <div class="container valores_pwm">
-        Valor de PWM <p id="pwm_value">789</p>
+        Valor de PWM <p id="pwm_value3">789</p>
     </div>
     <br>
 
@@ -107,13 +107,13 @@
             </thead>
             <tbody>
               <tr>
-                <th>192.168.100.2</th>
-                <td>LOLIPOP</td>
-                <td>GOOD</td>
-                <td>14:2131.123.12.31.231</td>
-                <td>1asndo</td>
-                <td>Mark</td>
-                <td>Otto</td> 
+                <th id="ip"> </th>
+                <td id="hn"> </td>
+                <td id="st"> </td>
+                <td id="ss"> </td>
+                <td id="ps"> </td>
+                <td id="bs"> </td>
+                <td id="rs"> </td> 
               </tr>
                
             </tbody>
@@ -144,7 +144,9 @@
         <i class="fa-regular fa-copyright"></i>  Derechos Reservados
       </p>
     </div>
-
+    <script>
+      var pageCurrent = 2;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

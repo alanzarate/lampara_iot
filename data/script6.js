@@ -80,7 +80,8 @@ function receiveJson(myObj){
     myObj.bssid,
     myObj.statusFoco,
     myObj.pwm,
-    myObj.limldr
+    myObj.limldr,
+    myObj.pir
   );
 }
 function updateValuesInFront(
@@ -93,17 +94,13 @@ function updateValuesInFront(
   bssid,
   statusFoco,
   pwm,
-  limldr
+  limldr,
+  pir
 ){
-  if(pageCurrent == 4){
-    document.getElementById("ldrlimval").innerHTML = limldr;
-  }
-  
-   
-  if(pageCurrent === 2){
-    document.getElementById("pwmslider").value = pwm;
-    document.getElementById("pwm_value3").innerHTML = pwm
-  }
+  document.getElementById("ldrlimval").innerHTML = limldr;
+  document.getElementById('pwm_value').innerHTML = pwm;
+     
+ 
   
   stateButton = statusFoco;
   changeStateLight();
@@ -120,7 +117,11 @@ function buildTable(ip, hostname, wifi_status, ssid, psk , bssid, rssi){
     
 }
 
-
+function changeDataVisible(tempC, tempF, hum){
+    gaugeTempC.value = tempC;
+    gaugeTempF.value = tempF;
+    gaugeHum.value = hum;
+}
 
 
 // adc chart 
@@ -165,7 +166,7 @@ setInterval(function ( ) {
         chartADC.series[0].addPoint([x, y], true, false, true);
       }
       if(pageCurrent === 3 || pageCurrent ===5){
-        document.getElementById('pwm_value3').innerHTML = myObj.pwm;
+        document.getElementById('pwm_value').innerHTML = myObj.pwm;
       }
 
      

@@ -88,7 +88,7 @@
     <div class="container c_infoLampara">
         <h5 class="titulo">Estado de la Lámpara</h5>
          <br>
-            <div class="label" onclick="imprimir()">
+            <div class="label" onclick="sendAction1(1)">
               <input type="checkbox"/>
               <span class="btn-real-sw"></span>
               <i id="pulsador-button" class="fa fa-power-off"></i>
@@ -98,7 +98,7 @@
 
 
     <div class="slider">
-        <input type="range" min="0" max="255" value="10"   oninput="rangeValue.innerText = this.value">
+        <input id="pwmslider" type="range" min="0" max="255" value="10"   oninput="rangeValue.innerText = this.value" onchange="sendPwm2(1)">
         <p id="rangeValue">10</p>
     </div>
 
@@ -120,13 +120,13 @@
             </thead>
             <tbody>
               <tr>
-                <th>192.168.100.2</th>
-                <td>LOLIPOP</td>
-                <td>GOOD</td>
-                <td>14:2131.123.12.31.231</td>
-                <td>1asndo</td>
-                <td>Mark</td>
-                <td>Otto</td> 
+                <th id="ip"> </th>
+                <td id="hn"> </td>
+                <td id="st"> </td>
+                <td id="ss"> </td>
+                <td id="ps"> </td>
+                <td id="bs"> </td>
+                <td id="rs"> </td> 
               </tr>
                
             </tbody>
@@ -157,7 +157,9 @@
         <i class="fa-regular fa-copyright"></i>  Derechos Reservados
       </p>
     </div>
-
+    <script>
+      var pageCurrent = 1;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

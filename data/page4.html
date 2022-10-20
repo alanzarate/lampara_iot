@@ -85,7 +85,7 @@
     <div class="container c_infoLampara">
         <h5 class="titulo">Estado de la Lámpara</h5>
          <br>
-            <div class="label" onclick="imprimir()">
+            <div class="label" onclick="sendAction1(3)">
               <input type="checkbox"/>
               <span class="btn-real-sw"></span>
               <i id="pulsador-button" class="fa fa-power-off"></i>
@@ -107,21 +107,21 @@
       <h5>Hora de encendido</h5>
       <div class="container">
         <label for="hour">H:</label>
-        <input type="number" name="hour" id="hour" min="0" max="23" value="0">
+        <input type="number" name="hour" id="hour1" min="0" max="23" value="0">
         <label for=minute>M:</label>
-        <input type="number" name="minute" id="minute" min="0" max="59" value="0">
+        <input type="number" name="minute" id="minute1" min="0" max="59" value="0">
         <label for=second>S:</label>
-        <input type="number" name="second" id="second" min="0" max="59" value="0">
+        <input type="number" name="second" id="second1" min="0" max="59" value="0">
       </div>
       <br>
       <h5>Hora de apagado</h5>
       <div class="container">
         <label for="hour">H:</label>
-        <input type="number" name="hour" id="hour" min="0" max="23" value="0">
+        <input type="number" name="hour" id="hour2" min="0" max="23" value="0">
         <label for=minute>M:</label>
-        <input type="number" name="minute" id="minute" min="0" max="59" value="0">
+        <input type="number" name="minute" id="minute2" min="0" max="59" value="0">
         <label for=second>S:</label>
-        <input type="number" name="second" id="second" min="0" max="59" value="0">
+        <input type="number" name="second" id="second2" min="0" max="59" value="0">
       </div>
       
 
@@ -152,13 +152,13 @@
             </thead>
             <tbody>
               <tr>
-                <th>192.168.100.2</th>
-                <td>LOLIPOP</td>
-                <td>GOOD</td>
-                <td>14:2131.123.12.31.231</td>
-                <td>1asndo</td>
-                <td>Mark</td>
-                <td>Otto</td> 
+                <th id="ip"> </th>
+                <td id="hn"> </td>
+                <td id="st"> </td>
+                <td id="ss"> </td>
+                <td id="ps"> </td>
+                <td id="bs"> </td>
+                <td id="rs"> </td> 
               </tr>
                
             </tbody>
@@ -262,11 +262,18 @@
       clock.init();
     </script>
     <script>
+      
+      var pageCurrent = 3;
+    
       function mostrar(){
-        const x = getElement("hour").value;
-        const y = getElement("minute").value;
-        const z = getElement("second").value;
-        swal('La hora que introdujo es: '+x+':'+y+':'+z);
+        var h1= document.getElementById("hour1").value;
+        var m1 = document.getElementById("minute1").value;
+        var s1 = document.getElementById("second1").value;
+        var h2= document.getElementById("hour2").value;
+        var m2 = document.getElementById("minute2").value;
+        var s2 = document.getElementById("second2").value;
+        convierte();
+        swal("Hora de encendido: " +h1+":"+m1+":"+s1+"\nHora de apagado:"+h2+":"+m2+":"+s2);
       }
     </script>
     <script src="script.js"></script>

@@ -81,7 +81,7 @@
     <div class="container c_infoLampara">
         <h5 class="titulo">Estado de la Lámpara</h5>
          <br>
-            <div class="label" onclick="imprimir()">
+            <div class="label" >
               <input type="checkbox"/>
               <span class="btn-real-sw"></span>
               <i id="pulsador-button" class="fa fa-power-off"></i>
@@ -89,17 +89,47 @@
     </div>
     <br>
     <hr>
-
-    <div class="sliderPwm">
-      <input type="range" min="0" max="255" value="10"   oninput="rangeValue1.innerText = this.value">
-      <p id="rangeValue1">10</p>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="sliderPwm">
+            <input type="range" min="0" max="255" value="10"   oninput="rangeValue1.innerText = this.value" onchange="sendPwm2(5)">
+            <p id="rangeValue1">10</p>
+            
+          </div>
+        </div>
+        <div class="col">
+          <div class="container valores_pwm">
+            Valor de PWM <p id="pwm_value">789</p>
+          </div>
+        </div>
+      </div>
+      
+      
     </div>
+
+    
 
     <hr>
-    <br>
-    <div class="container valores_pwm">
-      Valor de PWM <p id="pwm_value">789</p>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="slider1">
+            <input type="range" min="0" max="100" value="50"   oninput="rangeValue.innerText = this.value" onchange="sendLimitLDR(5)">
+            <p id="rangeValue">50</p> %
+          </div>
+        </div>
+        <div class="col">
+          <div class="container valores_pwm">
+            Valor de LDR limite <p id="ldrlimval">789</p>
+        </div>
+        </div>
+      </div>
+      
+      
     </div>
+    <br>
+    
     <br>
 
     <div id="chart-ADC" class="container"></div>
@@ -107,7 +137,7 @@
 
     <br>
 
-    <hr>
+ 
 
 
     <h2 style="text-align: center;">Control por horario programado:</h2>
@@ -150,34 +180,11 @@
   </div>  
   </div>
     <br>
-    <script>
-      const timer1 = document.querySelector('.timepicker1');
-      M.Timepicker.init(timer1, {twelveHour:false});
-      const timer2 = document.querySelector('.timepicker2');
-      M.Timepicker.init(timer2, {twelveHour:false});
-
-    </script>
+    
   <br>
   
-  <hr>
-  <br>
-  <br>
-    <div class="slider1">
-      <input type="range" min="0" max="100" value="50"   oninput="rangeValue.innerText = this.value">
-      <p id="rangeValue">50</p> %
-    </div>
-    <br>
-      <br>
-
-      <br>
-      <div class="container valores_pwm">
-          Valor de LDR limite <p id="pwm_value">789</p>
-      </div>
-      <br>
-
-      <div id="chart-LDR2" class="container"></div>
-
-      <br>
+ 
+  
       <br>
       <hr>
     <div class="container">
@@ -195,13 +202,13 @@
             </thead>
             <tbody>
               <tr>
-                <th>192.168.100.2</th>
-                <td>LOLIPOP</td>
-                <td>GOOD</td>
-                <td>14:2131.123.12.31.231</td>
-                <td>1asndo</td>
-                <td>Mark</td>
-                <td>Otto</td> 
+                <th id="ip"> </th>
+                <td id="hn"> </td>
+                <td id="st"> </td>
+                <td id="ss"> </td>
+                <td id="ps"> </td>
+                <td id="bs"> </td>
+                <td id="rs"> </td> 
               </tr>
                
             </tbody>
@@ -234,7 +241,9 @@
         <i class="fa-regular fa-copyright"></i>  Derechos Reservados
       </p>
     </div>
-
-    <script src="script.js"></script>
+    <script>
+      var pageCurrent = 5;
+    </script>
+    <script src="script6.js"></script>
 </body>
 </html>
