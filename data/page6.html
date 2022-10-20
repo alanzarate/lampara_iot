@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="page6.css">
+    <title>Lámpara</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+  </head>
+<body onload="getData()">
+
+    <div class="contaup">
+      <input type="checkbox" id="check"> 
+      <label for="check">
+          <i class="fas fa-bars" id="btnCheck"></i>
+          <i class="fas fa-times" id="btnClose"></i>
+      </label>
+      <div class="sidebar1">
+          <header>Menú</header>
+          <ul>
+            <li><a href="index.html" ><i class="fa-solid fa-dice-one"></i>Operación 1</a></li>
+            <li><a href="page2.html"><i class="fa-solid fa-dice-two"></i>Operación 2</a></li> 
+            <li><a href="page3.html"><i class="fa-solid fa-dice-three"></i>Operación 3</a></li>
+            <li><a href="page4.html"><i class="fa-solid fa-dice-four"></i>Operación 4</a></li>
+            <li><a href="page5.html"><i class="fa-solid fa-dice-five"></i>Operación 5</a></li>
+            <li><a href="#"  class="active"><i class="fa-solid fa-dice-six"></i>Operación 6</a></li> 
+              
+          </ul>
+      </div>
+  </div>
+  
+  <div class="container1">
+    <div class="row1">
+      <div class="f_col1">
+        <img
+        class="logo-ucb"
+        src="https://ucblpz.com/wp-content/uploads/2018/12/UCB-logo-lapaz.png"
+      />
+      </div>
+      <div class="f_col2">
+        <div>
+            <h2 class="titulo-h2">Internet de las cosas - Lámpara inteligente</h2>
+        </div>
+        
+        
+      </div>
+      <div class="f_col3">
+        
+        <div class="waveStrength-3">
+            <div class="wave">
+              <div class="wave">
+                <div class="wave">
+                  <div class="wave">
+                    <div class="wave"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+      <div class="f_col3">
+
+      </div>
+    </div>
+</div>
+
+
+    <div class="container c_infoLampara">
+        <h5 class="titulo">Estado de la Lámpara</h5>
+         <br>
+            <div class="label" onclick="imprimir()">
+              <input type="checkbox"/>
+              <span class="btn-real-sw"></span>
+              <i id="pulsador-button" class="fa fa-power-off"></i>
+        </div>
+    </div>
+    <br>
+    <hr>
+
+    <div class="sliderPwm">
+      <input type="range" min="0" max="255" value="10"   oninput="rangeValue1.innerText = this.value">
+      <p id="rangeValue1">10</p>
+    </div>
+
+    <hr>
+    <br>
+    <div class="container valores_pwm">
+      Valor de PWM <p id="pwm_value">789</p>
+    </div>
+    <br>
+
+    <div id="chart-ADC" class="container"></div>
+
+
+    <br>
+
+    <hr>
+
+
+    <div class="container">
+      <div class="row">
+         
+        <div class="col s12 m6">
+          <h2>Elige los horarios</h2>
+          <form>
+            <div class="input-field">
+              <input type="text" id="time1" class="timepicker1">
+              <label for="time1">Hora de encendido</label>
+            </div>
+            <div class="input-field">
+              <input type="text" id="time2" class="timepicker2">
+              <label for="time2">Hora de apagado</label>
+            </div>
+          </form>
+
+          <button onclick="convierte()">Definir horario</button>
+        </div>
+        
+        
+
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+    <script>
+      const timer1 = document.querySelector('.timepicker1');
+      M.Timepicker.init(timer1, {twelveHour:false});
+      const timer2 = document.querySelector('.timepicker2');
+      M.Timepicker.init(timer2, {twelveHour:false});
+
+    </script>
+  <br>
+  
+  <hr>
+  <br>
+  <br>
+    <div class="slider1">
+      <input type="range" min="0" max="100" value="50"   oninput="rangeValue.innerText = this.value">
+      <p id="rangeValue">50</p> %
+    </div>
+    <br>
+      <br>
+
+      <br>
+      <div class="container valores_pwm">
+          Valor de LDR limite <p id="pwm_value">789</p>
+      </div>
+      <br>
+
+      <div id="chart-LDR2" class="container"></div>
+
+      <br>
+      <br>
+      <hr>
+    <div class="container">
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">IP Local</th>
+                <th scope="col">Hostname</th>
+                <th scope="col">Status</th>
+                <th scope="col">SSID</th>
+                <th scope="col">PSK</th>
+                <th scope="col">BSSID</th>
+                <th scope="col">RSSI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>192.168.100.2</th>
+                <td>LOLIPOP</td>
+                <td>GOOD</td>
+                <td>14:2131.123.12.31.231</td>
+                <td>1asndo</td>
+                <td>Mark</td>
+                <td>Otto</td> 
+              </tr>
+               
+            </tbody>
+          </table>
+    </div>
+  
+    
+
+    <div class="footer">
+      <div class="row1">
+        <div class="col1">
+          <img
+            src="https://www.linkpicture.com/q/20210201_225708_2.jpg"
+            type="image"  
+            style="width: 250px; height: 250px; object-fit:cover;" 
+            />
+          <p>Alan Wiler Zarate Chino</p>
+        </div>
+        <div class="col1">
+          <img src="https://www.linkpicture.com/q/591_67344437_20190722_233525-5.jpg" type="image">
+          <p>Luis Felipe Caro</p>
+        </div>
+        <div class="col1">
+          <img src='https://www.linkpicture.com/q/perfil_2.jpg' type='image'>
+          <p>Pablo Marquez</p>
+        </div>
+      </div>
+      
+      <p>
+        <i class="fa-regular fa-copyright"></i>  Derechos Reservados
+      </p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
