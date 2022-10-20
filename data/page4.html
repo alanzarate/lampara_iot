@@ -12,6 +12,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Lámpara</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -89,37 +90,28 @@
     <br>
     <br>
 
-    <div class="container">
-        <div class="row">
-           
-          <div class="col s12 m6">
-            <h2>Elige los horarios</h2>
-            <form>
-              <div class="input-field">
-                <input type="text" id="time1" class="timepicker1">
-                <label for="time1">Hora de encendido</label>
-              </div>
-              <div class="input-field">
-                <input type="text" id="time2" class="timepicker2">
-                <label for="time2">Hora de apagado</label>
-              </div>
-            </form>
-  
-            <button onclick="convierte()">Convierte en milis</button>
-          </div>
-          
-          
-  
-        </div>
+<h2 style="text-align: center;">Control por horario programado:</h2>
+  <div class="container d-flex justify-content-center">
+  <div class="p-5 bg-dark bg-gradient text-white">
+    <h2 class="text-center mt-2">Control por Horario</h2>
+    <div id="digital-clock" class="bg-warning text-center text-black p-2 h2 w-full">
+    </div>
+    <h3 class="text-center">Programación del horario</h3>
+    <div id="alarm-list"></div>
+    <hr />
+    <form class="text-center mt-2">
+      <label for="hour">H:</label>
+      <input type="number" name="hour" id="hour" min="0" max="23" value="0">
+      <label for=minute>M:</label>
+      <input type="number" name="minute" id="minute" min="0" max="59" value="0">
+      <label for=second>S:</label>
+      <input type="number" name="second" id="second" min="0" max="59" value="0">
+      <div class="d-grid gap-2 mt-2">
+        <input type="button" class="btn btn-warning btn-block " value="Añadir horario" onclick="clock.addAlarm">
       </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
-      <script>
-        const timer1 = document.querySelector('.timepicker1');
-        M.Timepicker.init(timer1, {twelveHour:false});
-        const timer2 = document.querySelector('.timepicker2');
-        M.Timepicker.init(timer2, {twelveHour:false});
-
-      </script>
+    </form>
+  </div>  
+  </div>
     <br>
     <br>
 
@@ -176,7 +168,78 @@
         <i class="fa-regular fa-copyright"></i>  Derechos Reservados
       </p>
     </div>
+    <script>
+      const alarms = [];
+      const getElement = (id) => document.getElementById(id);
+      const createElement = (tag) => document.createElementById(tag);
 
+      class Clock {
+        locale ="es-ES"
+
+        init(){
+          setInterval(this.build, 1000)
+        }
+
+        build = () => {
+          const clockEl = getElement("digital-clock");
+          const time = this.toLocaleTimeString(new Date);
+          clockEl.innerHTML = time;
+          this.checkAlarms(time);
+        }
+
+        clearForm = () => {
+          getElement("hour").value = "";
+          getElement("minute").value = "";
+          getElement("second").value = "";
+          getElement("hour").focus();
+        }
+        addAlarm = () => {
+          const date = new Date;
+          date.setHours(getElement("hour").value);
+          date.setMinutes(getElement("minute").value);
+          date.setSeconds(getElement("second").value);
+          alarms.push(date);
+          this.clearForm();
+          this.displayAlarms();
+        }
+        renderAlarm = (alarm, alarmList) => {
+          const li = createElement("li");
+          li.innerHTML = 'Horario Programado:  ${this.toLocaleTimeString(alarm)}';
+          alarmList.appendChild(li);
+        }
+        displayAlarms = () => {
+          alarms.sort((d1, d2) => d1 - d2);
+          const alarmList = getElement("alarm-list");
+          alarmList.innerHTML = "";
+          for (let i = 0; i < alarms.length; i++){
+            this.renderAlarm(alarms[i], alarmList);
+          }
+        }
+        checkAlarms = (time) => {
+          for (let i = 0; i < alarms.length; i++){
+            const alarm = this.toLocaleTimeString(alarms[i]);
+            if (alarm == time){
+              alarms.splice(i,1);
+              this.displayAlarms();
+              alert('Encendido Programado para ${alarm}');
+            }
+          }
+        }
+        toLocaleTimeString = (date) =>
+        {
+          return date.toLocaleTimeString(
+            this.locale, 
+            {
+              hour: "2-digit",
+              minute:"2-digit",
+              second:"2-digit",
+            }
+            ) 
+        }
+      }
+      const clock = new Clock;
+      clock.init();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
