@@ -1,2 +1,3 @@
-const char* ssid = "RED LOLIPOP";         
-const char* password =  "123456789";  
+const char* ssid = "XXX_nameOfNetwork_XXX";         
+const char* password =  "XXX_password_XXX";
+

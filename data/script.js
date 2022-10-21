@@ -1,6 +1,6 @@
 window.addEventListener('load', getReadings);
 var stateButton = 0;
-
+var flag  = 0;
 function sendAction1(val){
   
   if(stateButton == 0){
@@ -230,13 +230,13 @@ function convierte(){
           console.log(mls1/3600000);
           console.log(mls2);
           console.log(mls2/3600000);
-
-          setInterval(function(){
+          
+          setTimeout(function(){
             var xhttp = new XMLHttpRequest();
             xhttp.open("PUT", "/TURN?PAGE="+3+"&VALUE="+1, true);
             xhttp.send(); 
           }, mls1);
-          setInterval(function(){
+          setTimeout(function(){
             var xhttp = new XMLHttpRequest();
             xhttp.open("PUT", "/TURN?PAGE="+3+"&VALUE="+0, true);
             xhttp.send(); 
