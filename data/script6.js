@@ -125,6 +125,9 @@ function changeDataVisible(tempC, tempF, hum){
 
 
 // adc chart 
+// documentation
+// https://api.highcharts.com/highcharts/xAxis.max
+// core coucmentation: https://code.highcharts.com/
 
 var chartADC = new Highcharts.Chart({
   chart:{ renderTo:'chart-ADC' },
